@@ -11,10 +11,10 @@
 
 [仓库](https://github.com/yangmingshan/slides)、[PPT](https://feday.fequan.com/vueconf24/mingshan_VueConf%20CN%202024.pdf)、[视频](https://www.bilibili.com/video/BV1J4421D7ja/)
 
-本文主要来体验下 vue-mini。
-
+本文主要来体验下 [vue-mini](https://vuemini.org/)，并且学习下大概是咋样实现的。
 
 学完本文，你将学到：
+
 ```bash
 1. vue-mini 初体验
 2.
@@ -32,7 +32,7 @@
 
 ![screenshot-cli](./images/screenshot-cli.png)
 
-
+调用的是[create-vue-mini](https://github.com/vue-mini/create-vue-mini)这个项目。它由 [create-vue](https://github.com/vuejs/create-vue) 修改而来。我在21年写过它的源码文章[Vue 团队公开快如闪电的全新脚手架工具 create-vue，未来将替代 Vue-CLI，才300余行代码，学它！](https://juejin.cn/post/7018344866811740173)，(3.9k阅读量、483赞)可供学习。
 
 ```bash
 pnpm run dev
@@ -44,6 +44,7 @@ pnpm run build
 
 ![vue-mini-project](./images/vue-mini-project.png)
 
+![vue-mini-project-mine](./images/vue-mini-project-mine.png)
 
 >"dev": "cross-env NODE_ENV=development node build.js",
 >"build": "cross-env NODE_ENV=production node build.js"

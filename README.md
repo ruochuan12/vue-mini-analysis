@@ -1,3 +1,7 @@
+---
+highlight: darcula
+theme: smartblue
+---
 
 # 开发小程序又一新选择 vue-mini，据说性能是 Taro 的 10 倍，遥遥领先
 
@@ -565,7 +569,9 @@ h1 {
 
 `vue-mini` 比较适合不需要跨端，比如不需要同时支持微信小程序和支付宝小程序。是一个新选择，性能基本等于原生微信小程序。适合本身就是使用的原生微信小程序开发的，可以渐进式升级替换为 `vue-mini`。
 
-不过目前还出于相对初期阶段，生态还不是很完善，比如暂不支持 less、sass 等。
+不过目前还处于相对初期阶段，生态还不是很完善，比如暂不支持 less、sass 等。
+
+`vue-mini` 作者在最后也有一页接下来的开发方向的PPT。
 
 ![vue-mini-next](./images/vue-mini-next.png)
 

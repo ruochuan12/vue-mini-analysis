@@ -5,36 +5,50 @@
 
 大家好，我是[若川](https://juejin.cn/user/1415826704971918)，欢迎关注我的[公众号：若川视野](https://mp.weixin.qq.com/s/MacNfeTPODNMLLFdzrULow)。我倾力持续组织了 3 年多[每周大家一起学习 200 行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，感兴趣的可以[点此扫码加我微信 `ruochuan02` 参与](https://juejin.cn/pin/7217386885793595453)。另外，想学源码，极力推荐关注我写的专栏[《学习源码整体架构系列》](https://juejin.cn/column/6960551178908205093)，目前是掘金关注人数（6k+人）第一的专栏，写有几十篇源码文章。
 
-刚刚结束不久的[vueconf 2024 深圳](https://vueconf.cn)，有一个主题《Vue-mini 不妥协的小程序框架》
+刚刚结束不久的[vueconf 2024 深圳](https://vueconf.cn)，有一个主题《Vue-Mini 不妥协的小程序框架》，[仓库](https://github.com/yangmingshan/slides)、[PPT](https://feday.fequan.com/vueconf24/mingshan_VueConf%20CN%202024.pdf)、[视频](https://www.bilibili.com/video/BV1J4421D7ja/)
 
-![alt text](./images/image.png)
+![vueconf.cn 截图](./images/image.png)
 
-[仓库](https://github.com/yangmingshan/slides)、[PPT](https://feday.fequan.com/vueconf24/mingshan_VueConf%20CN%202024.pdf)、[视频](https://www.bilibili.com/video/BV1J4421D7ja/)
+PPT 中有这样两页。
 
-本文主要来体验下 [vue-mini](https://vuemini.org/)，并且学习下基本的打包构建大概是咋样实现的。
+![taro 10x](./images/vuemini-vs-taro.png)
+
+[vue-mini 官网](https://vuemini.org/) 与其他的比较。
+
+![vue-mini 官网与其他的比较](./images/vue-mini-diff.png)
+
+更多兼容性和使用方法等查阅文档。
+
+本文主要来简单体验下 [vue-mini](https://vuemini.org/)，并且学习下基本的打包构建大概是如何实现的。
 
 学完本文，你将学到：
 
 ```bash
-1. vue-mini 初体验
-2.
+1. vue-mini 初步体验
+2. 初始化项目中的 build.js 是如何打包小程序代码的
+3. 如何处理 ts、css、html 文件
+4. 等等
 ```
 
-## 初始化项目
+## 2. 初始化项目
 
-- 目前结构
-- 打包后目录结构
-- 对比taro打包后的目录结构
-- build.js 分析
--
-
-根据 [官网文档](https://vuemini.org/) 生成小程序项目，我采用的是 `pnpm create vue-mini@lastest`，我都选择的是。如下图所示：
+根据 [官网文档](https://vuemini.org/) 生成小程序项目，我采用的是 `pnpm create vue-mini@lastest`，我都选择的"是"。如下图所示：
 
 ![screenshot-cli](./images/screenshot-cli.png)
 
-这个命令调用的是[create-vue-mini](https://github.com/vue-mini/create-vue-mini)这个项目，写文章时的版本是 `1.0.4`。它由 [create-vue](https://github.com/vuejs/create-vue) 修改而来。我在21年写过它的源码文章[Vue 团队公开快如闪电的全新脚手架工具 create-vue，未来将替代 Vue-CLI，才300余行代码，学它！](https://juejin.cn/post/7018344866811740173)，(3.9w+阅读量、483赞)可供学习。
+这个命令调用的是 [create-vue-mini](https://github.com/vue-mini/create-vue-mini) 这个项目，写文章时的版本是 `1.0.4`。它由 [create-vue](https://github.com/vuejs/create-vue) 修改而来。我在21年写过它的源码文章[Vue 团队公开快如闪电的全新脚手架工具 create-vue，未来将替代 Vue-CLI，才300余行代码，学它！](https://juejin.cn/post/7018344866811740173)，(3.9w+阅读量、483赞)可供学习。
 
-执行 `pnpm run dev` 或者 `pnpm run build` 命令后。
+也可以直接克隆我的项目。
+
+```bash
+git clone https://github.com/ruochuan12/vue-mini-analysis.git
+cd vue-mini-analysis
+pnpm install
+```
+
+执行 `pnpm install` 之后，再执行 `pnpm run dev` 或者 `pnpm run build` 命令。
+
+## 3. 体验 vue-mini
 
 直接选择项目根目录而非 `dist` 目录，将此项目导入微信开发者工具。
 
@@ -62,12 +76,18 @@
 
 ![build png](./images/build.png)
 
-目前是比较原始的方式，没有各种封装，相对容易学习。有小伙伴提建议[[Feature] 希望可以增强工程化等基建体验 #65](https://github.com/vue-mini/vue-mini/issues/65)。
+调试可参考我的文章[新手向：前端程序员必学基本技能——调试 JS 代码](https://juejin.cn/post/7030584939020042254)，或者[据说 90%的人不知道可以用测试用例(Vitest)调试开源项目(Vue3) 源码](https://juejin.cn/post/7212263304394981432)。本文就不做过多赘述。
+
+![debugger](./images/debugger.png)
+
+`build.js` 目前是比较原始的方式，没有各种封装，相对容易学习。有小伙伴提建议[[Feature] 希望可以增强工程化等基建体验 #65](https://github.com/vue-mini/vue-mini/issues/65)。
 
 让我想起很久很久以前（大约是6年前），`vue-cli@2.9.3` 版本时就是用生成 `vue` 项目就是直接生成在开发者的项目中。比较难以和官方保持同步升级。后来 `vue-cli@3.0` 之后版本就能相对容易升级了。
 >当时写过一篇文章[分析vue-cli@2.9.3 搭建的webpack项目工程](https://juejin.cn/post/6844903619184033800)，webpack 配置相关可能过时了，但其他知识没有过时，感兴趣的小伙伴可以学习。
 
-## build.js 引入各种依赖
+## 3. build.js 打包构建文件
+
+### 3.1 引入各种依赖
 
 ```ts
 // 引入 node path 模块和 process 模块
@@ -134,7 +154,7 @@ import { green, bold } from 'kolorist';
 
 >引入 [kolorist](https://www.npmjs.com/package/kolorist) 模块，用来输出彩色文字
 
-### 定义变量
+### 3.2 定义变量
 
 ```js
 // 等待列表， promise 数组
@@ -157,9 +177,7 @@ const terserOptions = {
 const bundledModules = new Set();
 ```
 
-调试可参考我的文章[新手向：前端程序员必学基本技能——调试 JS 代码](https://juejin.cn/post/7030584939020042254)，或者[据说 90%的人不知道可以用测试用例(Vitest)调试开源项目(Vue3) 源码](https://juejin.cn/post/7212263304394981432)。本文就不做过多赘述。
-
-### 调用 prod 或者 dev
+### 3.3 调用 prod 或者 dev
 
 ```js
 if (__PROD__) {
@@ -171,7 +189,7 @@ if (__PROD__) {
 
 我们先来看 `prod` 函数，再看 `dev` 函数。
 
-### prod 函数
+### 3.4 prod 函数
 
 ```js
 async function prod() {
@@ -199,7 +217,7 @@ async function prod() {
 4. 最后调用 Promise.all(waitList) 执行所有的 `promise`。
 5. 最后打印构建时长。
 
-### dev 函数
+### 3.5 dev 函数
 
 ```js
 async function dev() {
@@ -260,7 +278,7 @@ const cb = async (filePath) => {
 
 分别来看这几个函数的实现，我们先看 `processScript` 处理 `ts` 文件
 
-### processScript 处理 ts
+### 3.6 processScript 处理 ts
 
 ```js
 async function processScript(filePath) {
@@ -279,7 +297,11 @@ async function processScript(filePath) {
     console.error(error);
     return;
   }
+```
 
+使用 [babel.transformFileAsync](https://babeljs.io/docs/babel-core#transformfileasync) 异步地将文件内容转换为抽象语法树（AST）和转换后的代码。
+
+```js
   if (filePath.endsWith('app.ts')) {
     /**
      * IOS 小程序 Promise 使用的内置的 Polyfill，但这个 Polyfill 有 Bug 且功能不全，
@@ -295,7 +317,11 @@ async function processScript(filePath) {
     const promise = bundleModule('promise-polyfill');
     waitList?.push(promise);
   }
+```
 
+替换代码 '"use strict";'，追加 `Promise` 的 Polyfill，这里使用的是 [promise-polyfill](https://github.com/taylorhakes/promise-polyfill)。
+
+```js
   traverse.default(ast, {
     CallExpression({ node }) {
       if (
@@ -310,7 +336,12 @@ async function processScript(filePath) {
       waitList?.push(promise);
     },
   });
+```
 
+遍历 `AST`，找到 `CallExpression` 节点，判断是否为 `require` 函数，并且参数是字符串，且不是相对路径。
+
+```js
+  // 生产环境压缩代码
   if (__PROD__) {
     code = (await minify(code, terserOptions)).code;
   }
@@ -322,9 +353,39 @@ async function processScript(filePath) {
 }
 ```
 
-#### babel.config.js babel 配置文件
+经过以上处理后，`src/pages/home/index.ts` 变成了 `dist/pages/home/index.js`，代码如下所示：
 
 ```js
+// src/pages/home/index.ts
+import { defineComponent, ref } from '@vue-mini/core';
+
+defineComponent(() => {
+  const greeting = ref('欢迎使用 Vue Mini');
+
+  return {
+    greeting,
+  };
+});
+```
+
+```js
+"use strict";
+
+var _core = require("@vue-mini/core");
+(0, _core.defineComponent)(() => {
+  const greeting = (0, _core.ref)('欢迎使用 Vue Mini');
+  return {
+    greeting
+  };
+});
+```
+
+我们来简单看下 babel 配置。
+
+#### 3.6.1 babel.config.js babel 配置文件
+
+```js
+// babel.config.js
 import fs from 'node:fs';
 
 const runtimeVersion = JSON.parse(
@@ -337,26 +398,7 @@ const runtimeVersion = JSON.parse(
 const config = {
   targets: {},
   assumptions: {
-    arrayLikeIsIterable: true,
-    constantReexports: true,
-    constantSuper: true,
-    enumerableModuleMeta: true,
-    ignoreFunctionLength: true,
-    ignoreToPrimitiveHint: true,
-    iterableIsArray: true,
-    mutableTemplateObject: true,
-    noClassCalls: true,
-    noDocumentAll: true,
-    noNewArrows: true,
-    objectRestNoSymbols: true,
-    privateFieldsAsProperties: true,
-    pureGetters: true,
-    setClassMethods: true,
-    setComputedProperties: true,
-    setPublicClassFields: true,
-    setSpreadProperties: true,
-    skipForOfIteratorClosing: true,
-    superIsCallableConstructor: true,
+    // 省略若干代码
   },
   presets: [
     [
@@ -393,7 +435,7 @@ export default config;
 
 我们继续来看 `bundleModule` 函数的具体实现。
 
-### bundleModule 打包模块
+### 3.7 bundleModule 打包模块
 
 ```js
 async function bundleModule(module) {
@@ -425,9 +467,12 @@ async function bundleModule(module) {
 如果已经有打包好的模块，直接返回。
 用 `rollup` 打包模块，处理成 `commonjs`，并写入 `dist/miniprogram_npm` 目录。
 
-我们继续来看 `html` 文件处理
+如图所示：
+![miniprogram_npm](./images/npm.png)
 
-### processTemplate 处理模板 html
+我们继续来看 `html` 文件处理：
+
+### 3.8 processTemplate 处理模板 html
 
 ```js
 async function processTemplate(filePath) {
@@ -440,11 +485,13 @@ async function processTemplate(filePath) {
 
 这个函数相对简单，就是复制 `src` `html` 文件修改后缀名为 `.wxml` 文件到 `dist` 目录。
 
-### processStyle 处理样式文件
+### 3.9 processStyle 处理样式文件
 
 ```js
 async function processStyle(filePath) {
+  // 读取样式文件
   const source = await fs.readFile(filePath, 'utf8');
+  // 读取配置 postcss.config.js
   const { plugins, options } = await postcssrc({ from: undefined });
 
   let css;
@@ -454,6 +501,7 @@ async function processStyle(filePath) {
   } catch (error) {
     console.error(`Failed to compile ${filePath}`);
 
+    // 生产环境打包构建时，抛出错误
     if (__PROD__) throw error;
 
     console.error(error);
@@ -472,7 +520,7 @@ async function processStyle(filePath) {
 [postcss-load-config](https://github.com/postcss/postcss-load-config#readme) `Autoload Config for PostCSS` 是自动加载 `postcss.config.js` 等配置文件，并解析其中的插件。
 然后调用 `postcss` 解析样式文件，并写入 `dist` 目录。
 
-#### postcss.config.js
+#### 3.9.1 postcss.config.js postcss 配置文件
 
 ```js
 // postcss.config.js
@@ -507,7 +555,17 @@ h1 {
 }
 ```
 
-## 总结
+## 4. 总结
+
+我们知道了 `vue-mini` 是渐进式开发微信小程序。和原生开发不是二选一。性能上，`vue-mini` 接近原生，开发体验优于原生开发。
+
+学习了初始化项目中的 `build.js` 是如何打包小程序代码的。
+
+学习了使用 `cross-env` 配置环境变量，使用 chokidar 监听文件变动。使用 `babel` 处理 `js` 文件，使用 `rollup` 打包模块，使用 `postcss` 处理样式文件。
+
+`vue-mini` 比较适合不需要跨端，比如不需要同时支持微信小程序和支付宝小程序。是一个新选择，性能基本等于原生微信小程序。适合本身就是使用的原生微信小程序开发的，可以渐进式升级替换为 `vue-mini`。
+
+不过目前还出于相对初期阶段，生态还不是很完善，比如暂不支持 less、sass 等。感兴趣的小伙伴可以[点个 star](https://github.com/vue-mini/vue-mini)。我们持续关注后续发展，有余力的小伙伴也可以多参与贡献。
 
 ----
 

@@ -1,13 +1,11 @@
 
-# 开发小程序又一新选择 vue-mini，据说性能是 Taro 的10倍，遥遥领先
+# 开发小程序又一新选择 vue-mini，据说性能是 Taro 的 10 倍，遥遥领先
 
 ## 1. 前言
 
 大家好，我是[若川](https://juejin.cn/user/1415826704971918)，欢迎关注我的[公众号：若川视野](https://mp.weixin.qq.com/s/MacNfeTPODNMLLFdzrULow)。我倾力持续组织了 3 年多[每周大家一起学习 200 行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，感兴趣的可以[点此扫码加我微信 `ruochuan02` 参与](https://juejin.cn/pin/7217386885793595453)。另外，想学源码，极力推荐关注我写的专栏[《学习源码整体架构系列》](https://juejin.cn/column/6960551178908205093)，目前是掘金关注人数（6k+人）第一的专栏，写有几十篇源码文章。
 
-刚刚结束不久的[vueconf 深圳](https://vueconf.cn)
-
-有一个主题《Vue-mini 不妥协的小程序框架》
+刚刚结束不久的[vueconf 2024 深圳](https://vueconf.cn)，有一个主题《Vue-mini 不妥协的小程序框架》
 
 ![alt text](./images/image.png)
 
@@ -30,21 +28,15 @@
 - build.js 分析
 -
 
-根据官网文档生成小程序项目，我采用的是 `pnpm create vue-mini@lastest`
+根据 [官网文档](https://vuemini.org/) 生成小程序项目，我采用的是 `pnpm create vue-mini@lastest`，我都选择的是。如下图所示：
 
 ![screenshot-cli](./images/screenshot-cli.png)
 
-调用的是[create-vue-mini](https://github.com/vue-mini/create-vue-mini)这个项目。它由 [create-vue](https://github.com/vuejs/create-vue) 修改而来。我在21年写过它的源码文章[Vue 团队公开快如闪电的全新脚手架工具 create-vue，未来将替代 Vue-CLI，才300余行代码，学它！](https://juejin.cn/post/7018344866811740173)，(3.9w+阅读量、483赞)可供学习。
+这个命令调用的是[create-vue-mini](https://github.com/vue-mini/create-vue-mini)这个项目，写文章时的版本是 `1.0.4`。它由 [create-vue](https://github.com/vuejs/create-vue) 修改而来。我在21年写过它的源码文章[Vue 团队公开快如闪电的全新脚手架工具 create-vue，未来将替代 Vue-CLI，才300余行代码，学它！](https://juejin.cn/post/7018344866811740173)，(3.9w+阅读量、483赞)可供学习。
 
-```bash
-pnpm run dev
-```
+执行 `pnpm run dev` 或者 `pnpm run build` 命令后。
 
-```bash
-pnpm run build
-```
-
-将此项目导入微信开发者工具时请选择项目根目录而非 `dist` 目录。
+直接选择项目根目录而非 `dist` 目录，将此项目导入微信开发者工具。
 
 打开项目如图：
 
@@ -52,61 +44,108 @@ pnpm run build
 
 ![vue-mini-project-mine](./images/vue-mini-project-mine.png)
 
->"dev": "cross-env NODE_ENV=development node build.js",
->"build": "cross-env NODE_ENV=production node build.js"
+分别对应的是 `package.json` 中的两个命令。
+
+```json
+// package.json
+{
+ "scripts": {
+  "dev": "cross-env NODE_ENV=development node build.js",
+  "build": "cross-env NODE_ENV=production node build.js"
+ }
+}
+```
 
 [cross-env](https://www.npmjs.com/package/cross-env) 是用来跨平台设置环境变量的，`NODE_ENV=development` 代表开发环境，`NODE_ENV=production` 代表生产环境。
 
-## build.js
+我们可以打开 `build.js` 文件，查看下它的代码。
+
+![build png](./images/build.png)
+
+目前是比较原始的方式，没有各种封装，相对容易学习。有小伙伴提建议[[Feature] 希望可以增强工程化等基建体验 #65](https://github.com/vue-mini/vue-mini/issues/65)。
+
+让我想起很久很久以前（大约是6年前），`vue-cli@2.9.3` 版本时就是用生成 `vue` 项目就是直接生成在开发者的项目中。比较难以和官方保持同步升级。后来 `vue-cli@3.0` 之后版本就能相对容易升级了。
+>当时写过一篇文章[分析vue-cli@2.9.3 搭建的webpack项目工程](https://juejin.cn/post/6844903619184033800)，webpack 配置相关可能过时了，但其他知识没有过时，感兴趣的小伙伴可以学习。
+
+## build.js 引入各种依赖
 
 ```ts
 // 引入 node path 模块和 process 模块
 import path from 'node:path';
 import process from 'node:process';
+```
 
+>引入 node path 模块和 process 模块
+
+```js
 import fs from 'fs-extra';
 import chokidar from 'chokidar';
+```
+
+>引入 [fs-extra](https://www.npmjs.com/package/fs-extra) 模块，用来操作文件和目录
+
+>引入 [chokidar](https://www.npmjs.com/package/chokidar) 模块，用来监听文件变化
+
+```js
 import babel from '@babel/core';
 import traverse from '@babel/traverse';
 import t from '@babel/types';
 import { minify } from 'terser';
+```
+
+>引入 [@babel/core](https://www.npmjs.com/package/@babel/core) 模块，用来编译 js 代码
+
+>引入 [@babel/traverse](https://www.npmjs.com/package/@babel/traverse) 模块，用来遍历 js 代码
+
+>引入 [@babel/types](https://www.npmjs.com/package/@babel/types) 模块，用来编译 js 代码
+
+>引入 [terser](https://www.npmjs.com/package/terser) 模块，用来压缩 js 代码
+
+```js
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
+```
+
+>引入 [postcss](https://www.npmjs.com/package/postcss) 模块，用来编译 css 代码
+
+>引入 [postcss-load-config](https://www.npmjs.com/package/postcss-load-config) 模块，用来加载 postcss 配置文件
+
+```js
 import { rollup } from 'rollup';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
+```
+
+>引入 [rollup](https://www.npmjs.com/package/rollup) 模块，用来打包 js 代码
+
+>引入 [@rollup/plugin-replace](https://www.npmjs.com/package/@rollup/plugin-replace) 模块，用来替换代码
+
+>引入 [@rollup/plugin-terser](https://www.npmjs.com/package/@rollup/plugin-terser) 模块，用来压缩 js 代码
+
+>引入 [@rollup/plugin-node-resolve](https://www.npmjs.com/package/@rollup/@rollup/plugin-node-resolve) 模块，用来解析 node_modules 中的依赖
+
+>引入 [@rollup/commonjs](https://www.npmjs.com/package/@rollup/@rollup/commonjs) 模块，用来解析 commonjs 依赖
+
+```js
 import { green, bold } from 'kolorist';
 ```
 
->引入 node path 模块和 process 模块
->引入 fs-extra 模块，用来操作文件和目录
->引入 chokidar 模块，用来监听文件变化
->引入 babel 模块，用来编译 js 代码
->引入 traverse 模块，用来遍历 js 代码
->引入 t 模块，用来编译 js 代码
->引入 terser 模块，用来压缩 js 代码
->引入 postcss 模块，用来编译 css 代码
->引入 postcssrc 模块，用来加载 postcss 配置文件
->引入 rollup 模块，用来打包 js 代码
->引入 replace 模块，用来替换代码
->引入 terser 模块，用来压缩 js 代码
->引入 resolve 模块，用来解析 node_modules 中的依赖
->引入 commonjs 模块，用来解析 commonjs 依赖
 >引入 [kolorist](https://www.npmjs.com/package/kolorist) 模块，用来输出彩色文字
->引入 rollup-plugin-terser 模块，用来压缩 js 代码
->引入 rollup-plugin-commonjs 模块，用来解析 commonjs 依赖
 
 ### 定义变量
 
 ```js
+// 等待列表， promise 数组
 let waitList = [];
+// 开始时间，计算最终打包时间
 const startTime = Date.now();
 // 区分开发环境和生产环境
 const NODE_ENV = process.env.NODE_ENV || 'production';
 // 生产环境
 const __PROD__ = NODE_ENV === 'production';
+// 压缩代码的配置
 const terserOptions = {
   ecma: 2016,
   toplevel: true,
@@ -114,10 +153,11 @@ const terserOptions = {
   format: { comments: false },
 };
 
+// 记录打包的模块，方便避免重复打包
 const bundledModules = new Set();
 ```
 
-调试
+调试可参考我的文章[新手向：前端程序员必学基本技能——调试 JS 代码](https://juejin.cn/post/7030584939020042254)，或者[据说 90%的人不知道可以用测试用例(Vitest)调试开源项目(Vue3) 源码](https://juejin.cn/post/7212263304394981432)。本文就不做过多赘述。
 
 ### 调用 prod 或者 dev
 
@@ -129,7 +169,9 @@ if (__PROD__) {
 }
 ```
 
-### prod
+我们先来看 `prod` 函数，再看 `dev` 函数。
+
+### prod 函数
 
 ```js
 async function prod() {
@@ -150,7 +192,14 @@ async function prod() {
 }
 ```
 
-### dev
+这个函数主要做了以下几件事：
+1. 移除 dist 目录
+2. 监听 src 目录
+3. 对于监听的文件，调用 cb 函数，把返回的 promise ，存入数组 waitList。
+4. 最后调用 Promise.all(waitList) 执行所有的 `promise`。
+5. 最后打印构建时长。
+
+### dev 函数
 
 ```js
 async function dev() {
@@ -175,6 +224,14 @@ async function dev() {
     });
 }
 ```
+
+这个函数和 prod 函数类似，主要做了以下几件事：
+1. 移除 dist 目录
+2. 监听 src 目录
+3. 对于监听的文件，调用 cb 函数，把返回的 promise ，存入数组 waitList。
+4. 文件改变时，调用 cb 函数。
+5. 调用 Promise.all(waitList) 执行所有的 `promise`。
+6. 最后打印启动时长，清空 waitList。
 
 我们接着来看，`cb` 函数，这个函数用来处理文件变化。
 
@@ -201,7 +258,7 @@ const cb = async (filePath) => {
 
 `cb` 函数主要用来处理 `ts、html、css` 文件和复制文件到 `dist` 目录。
 
-`processScript` 处理 `ts` 文件
+分别来看这几个函数的实现，我们先看 `processScript` 处理 `ts` 文件
 
 ### processScript 处理 ts
 
@@ -265,7 +322,7 @@ async function processScript(filePath) {
 }
 ```
 
-#### babel.config.js
+#### babel.config.js babel 配置文件
 
 ```js
 import fs from 'node:fs';
@@ -334,6 +391,8 @@ const config = {
 export default config;
 ```
 
+我们继续来看 `bundleModule` 函数的具体实现。
+
 ### bundleModule 打包模块
 
 ```js
@@ -379,7 +438,7 @@ async function processTemplate(filePath) {
 }
 ```
 
-复制 `src` `html` 文件 修改后缀名为 `.wxml` 文件到 `dist` 目录。
+这个函数相对简单，就是复制 `src` `html` 文件修改后缀名为 `.wxml` 文件到 `dist` 目录。
 
 ### processStyle 处理样式文件
 
@@ -413,6 +472,8 @@ async function processStyle(filePath) {
 [postcss-load-config](https://github.com/postcss/postcss-load-config#readme) `Autoload Config for PostCSS` 是自动加载 `postcss.config.js` 等配置文件，并解析其中的插件。
 然后调用 `postcss` 解析样式文件，并写入 `dist` 目录。
 
+#### postcss.config.js
+
 ```js
 // postcss.config.js
 import pxtorpx from 'postcss-pxtorpx-pro';
@@ -424,7 +485,9 @@ const config = {
 export default config;
 ```
 
-[postcss-pxtorpx-pro](https://github.com/Genuifx/postcss-pxtorpx-pro#readme)
+引入 [postcss-pxtorpx-pro](https://github.com/Genuifx/postcss-pxtorpx-pro#readme) 插件，将 `px` 转换为 `rpx`。
+
+处理 `px` 为 `rpx` 如下所示：
 
 ```css
 // input
@@ -443,6 +506,8 @@ h1 {
   letter-spacing: 2rpx;
 }
 ```
+
+## 总结
 
 ----
 

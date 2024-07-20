@@ -3,27 +3,25 @@ highlight: darcula
 theme: smartblue
 ---
 
-# 开发小程序又一新选择 vue-mini，据说性能是 Taro 的 10 倍，遥遥领先
-
 ## 1. 前言
 
 大家好，我是[若川](https://juejin.cn/user/1415826704971918)，欢迎关注我的[公众号：若川视野](https://mp.weixin.qq.com/s/MacNfeTPODNMLLFdzrULow)。我倾力持续组织了 3 年多[每周大家一起学习 200 行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，感兴趣的可以[点此扫码加我微信 `ruochuan02` 参与](https://juejin.cn/pin/7217386885793595453)。另外，想学源码，极力推荐关注我写的专栏[《学习源码整体架构系列》](https://juejin.cn/column/6960551178908205093)，目前是掘金关注人数（6k+人）第一的专栏，写有几十篇源码文章。
 
 刚刚结束不久的[vueconf 2024 深圳](https://vueconf.cn)，有一个主题《Vue-Mini 不妥协的小程序框架》，[仓库](https://github.com/yangmingshan/slides)、[PPT](https://feday.fequan.com/vueconf24/mingshan_VueConf%20CN%202024.pdf)、[视频](https://www.bilibili.com/video/BV1J4421D7ja/)
 
-![vueconf.cn 截图](./images/image.png)
+![vueconf.cn 截图](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9b12b4eebc204cd8bdc5e5703b4bea49~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=WHB90pZKM%2FJz6rTsK%2BczROJdDgc%3D)
 
 PPT 中有这样两页。
 
-![taro 10x](./images/vuemini-vs-taro.png)
+![vuemini-vs-taro.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d2350d433de94d5ca75d076039ec30f3~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=0Q%2Fsttfaj0k9RaEnWaiUsyA0gPA%3D)
 
 [和 taro 性能对比数据的仓库链接](https://github.com/yangmingshan/mp-framework-benchmark)，目前作者暂未给出与 `uniapp` 的性能对比。[有小伙伴在 issue 中问到，作者回复后续会补上](https://github.com/yangmingshan/mp-framework-benchmark/issues/1)
 
 [vue-mini 官网](https://vuemini.org/guide/comparisons.html) 与其他的比较。
 
-![vue-mini 官网与其他的比较](./images/vue-mini-diff.png)
+![vue-mini 官网与其他的比较](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/cb65bd1eb46344199226ebf5ee35fa90~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=qJjxdhEvntzRtqQMaz2FG3Y3f0M%3D)
 
-![vue-mini 官网与其他的比较](./images/vue-mini-diff-2.png)
+![vue-mini 官网与其他的比较2](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a7c64ee8483d48f8a9c967bc4f8015ca~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=e9ecf3d6\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1721543886\&x-orig-sign=Oeaq01Dno3zE8AJ3xSaPbnv%2B2II%3D)
 
 更多兼容性和使用方法等查阅[vue-mini 文档](https://vuemini.org/)。
 
@@ -42,7 +40,7 @@ PPT 中有这样两页。
 
 根据 [官网文档快速开始](https://vuemini.org/guide/quick-start.html) 生成小程序项目，我采用的是 `pnpm create vue-mini@lastest`，我都选择的"是"。如下图所示：
 
-![screenshot-cli](./images/screenshot-cli.png)
+![screenshot-cli.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/419ee9538a204539a9a839835bc9de0d~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=mG%2BC0Af%2FWHsrMFfxp6p3b1ZWxVw%3D)
 
 这个命令调用的是 [create-vue-mini](https://github.com/vue-mini/create-vue-mini) 这个项目，写文章时的版本是 `1.0.4`。它由 [create-vue](https://github.com/vuejs/create-vue) 修改而来。我在21年写过它的源码文章[Vue 团队公开快如闪电的全新脚手架工具 create-vue，未来将替代 Vue-CLI，才300余行代码，学它！](https://juejin.cn/post/7018344866811740173)，(3.9w+阅读量、483赞)可供学习。
 
@@ -62,29 +60,28 @@ pnpm install
 
 打开项目如图：
 
-![vue-mini-project](./images/vue-mini-project.png)
+![vue-mini-project.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b38b7c58a65b4df2a9ae78b4a72c1528~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=%2BH4pcqu5wSxTqK3WJBbJ%2Fh%2B%2BFzs%3D)
 
-![vue-mini-project-mine](./images/vue-mini-project-mine.png)
+![vue-mini-project-mine.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/3a4a5d3858754f42a39db68dc2e2db15~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=GYcwunbHBAg%2BnglsdTbrDM1BPxA%3D)
 
 ### 3.1 对比打包构建的代码
 
 我们具体来对比执行 `pnpm run dev` 命令之后生成的代码。
 
-入口 app.ts 文件。
-
-![入口 app.ts 文件](./images/app.ts.png)
+入口 app.ts 文件
+![入口 app.ts 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9593911210bb4a399ea487589adf8fe1~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544112&x-orig-sign=HLFhh4hV8R47v4U3pg2v8iAdRBk%3D)
 
 首页 html 文件
-![首页 html 文件](./images/home.html.png)
+![首页 html 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d16f83dc9cef49b09f21acc9a8ff6b7a~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544140&x-orig-sign=06BQSDNV2MjUOJLnIbM3LkKsk8Q%3D)
 
 首页 css 文件
-![首页 css 文件](./images/home.css.png)
+![首页 css 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c25f8e02dfae4ab9a7b0ca9011dcca15~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544161&x-orig-sign=%2FBon1labFfiXq4eeBMfzmAwPOE8%3D)
 
 首页 ts 文件
-![首页 ts 文件](./images/home.ts.png)
+![首页 ts 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6e23d968c93b4de5b9986c24f818fbd6~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544183&x-orig-sign=pTgm%2BKXMppYVmHnhoNZ%2Frz9nReg%3D)
 
 首页 json 文件
-![首页 json 文件](./images/home.json.png)
+![首页 json 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c73cc5fea6854134bc56f72768b85166~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544202&x-orig-sign=gNYBbQduYQMjCuL64w5ALXAMdiM%3D)
 
 我们可以看到主要就是处理入口 `app.ts` 文件（单独追加了 `promise-polyfill`）、`html`、`css`、`ts`文件编译成了微信小程序支持的 `app.js`、`wxml`、`wxss`、`js`。`json` 文件是直接复制的，没做处理。
 
@@ -93,7 +90,7 @@ pnpm install
 `css` 部分也是原生微信小程序的 `wxss` 只是单位 `rpx` 改成了 `px` 而已，未做类似单文件组件的编译。
 就是就是逻辑侧，`ts` 文件使用了 `vue-mini/core`，轻运行时，会把 `ES Module` 编译成 `commonjs`。
 
-### 3.1 dev 和 build 命令
+### 3.2 dev 和 build 命令
 
 `pnpm run dev` 和 `pnpm run build` 分别对应的是 `package.json` 中的两个命令。
 
@@ -111,16 +108,17 @@ pnpm install
 
 我们可以打开 `build.js` 文件，查看下它的代码。
 
-![build png](./images/build.png)
+![build.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/1266472e495c4a348cd9ae1e19d80c5d~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=u1%2BUlormlJ98XHwsp8Cc%2F3QbCrQ%3D)
 
 调试可参考我的文章[新手向：前端程序员必学基本技能——调试 JS 代码](https://juejin.cn/post/7030584939020042254)，或者[据说 90%的人不知道可以用测试用例(Vitest)调试开源项目(Vue3) 源码](https://juejin.cn/post/7212263304394981432)。本文就不做过多赘述。
 
-![debugger](./images/debugger.png)
+![debugger.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/aa84c2f4a39c4665ab962450a21f1665~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=1mBrWFOKrm3CBKHe1%2FWyOtPe7tE%3D)
 
-`build.js` 目前是比较原始的方式，没有各种封装，相对容易学习。有小伙伴提建议[[Feature] 希望可以增强工程化等基建体验 #65](https://github.com/vue-mini/vue-mini/issues/65)。
+`build.js` 目前是比较原始的方式，没有各种封装，相对容易学习。有小伙伴提建议[\[Feature\] 希望可以增强工程化等基建体验 #65](https://github.com/vue-mini/vue-mini/issues/65)。
 
 让我想起很久很久以前（大约是6年前），`vue-cli@2.9.3` 版本时就是用生成 `vue` 项目就是直接生成在开发者的项目中。比较难以和官方保持同步升级。后来 `vue-cli@3.0` 之后版本就能相对容易升级了。
->当时写过一篇文章[分析vue-cli@2.9.3 搭建的webpack项目工程](https://juejin.cn/post/6844903619184033800)，webpack 配置相关可能过时了，但其他知识没有过时，感兴趣的小伙伴可以学习。
+
+> 当时写过一篇文章[分析vue-cli@2.9.3 搭建的webpack项目工程](https://juejin.cn/post/6844903619184033800)，webpack 配置相关可能过时了，但其他知识没有过时，感兴趣的小伙伴可以学习。
 
 ## 3. build.js 打包构建文件
 
@@ -132,15 +130,15 @@ import path from 'node:path';
 import process from 'node:process';
 ```
 
->引入 node path 模块和 process 模块
+> 引入 node path 模块和 process 模块
 
 ```js
 import fs from 'fs-extra';
 import chokidar from 'chokidar';
 ```
 
->引入 [fs-extra](https://www.npmjs.com/package/fs-extra) 模块，用来操作文件和目录
->引入 [chokidar](https://www.npmjs.com/package/chokidar) 模块，用来监听文件变化
+> 引入 [fs-extra](https://www.npmjs.com/package/fs-extra) 模块，用来操作文件和目录\
+> 引入 [chokidar](https://www.npmjs.com/package/chokidar) 模块，用来监听文件变化
 
 ```js
 import babel from '@babel/core';
@@ -149,18 +147,18 @@ import t from '@babel/types';
 import { minify } from 'terser';
 ```
 
->引入 [@babel/core](https://www.npmjs.com/package/@babel/core) 模块，用来编译 js 代码
->引入 [@babel/traverse](https://www.npmjs.com/package/@babel/traverse) 模块，用来遍历 js 代码
->引入 [@babel/types](https://www.npmjs.com/package/@babel/types) 模块，用来编译 js 代码
->引入 [terser](https://www.npmjs.com/package/terser) 模块，用来压缩 js 代码
+> 引入 [@babel/core](https://www.npmjs.com/package/@babel/core) 模块，用来编译 js 代码\
+> 引入 [@babel/traverse](https://www.npmjs.com/package/@babel/traverse) 模块，用来遍历 js 代码\
+> 引入 [@babel/types](https://www.npmjs.com/package/@babel/types) 模块，用来编译 js 代码\
+> 引入 [terser](https://www.npmjs.com/package/terser) 模块，用来压缩 js 代码
 
 ```js
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
 ```
 
->引入 [postcss](https://www.npmjs.com/package/postcss) 模块，用来编译 css 代码
->引入 [postcss-load-config](https://www.npmjs.com/package/postcss-load-config) 模块，用来加载 postcss 配置文件
+> 引入 [postcss](https://www.npmjs.com/package/postcss) 模块，用来编译 css 代码\
+> 引入 [postcss-load-config](https://www.npmjs.com/package/postcss-load-config) 模块，用来加载 postcss 配置文件
 
 ```js
 import { rollup } from 'rollup';
@@ -170,17 +168,17 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 ```
 
->引入 [rollup](https://www.npmjs.com/package/rollup) 模块，用来打包 js 代码
->引入 [@rollup/plugin-replace](https://www.npmjs.com/package/@rollup/plugin-replace) 模块，用来替换代码
->引入 [@rollup/plugin-terser](https://www.npmjs.com/package/@rollup/plugin-terser) 模块，用来压缩 js 代码
->引入 [@rollup/plugin-node-resolve](https://www.npmjs.com/package/@rollup/@rollup/plugin-node-resolve) 模块，用来解析 node_modules 中的依赖
->引入 [@rollup/commonjs](https://www.npmjs.com/package/@rollup/@rollup/commonjs) 模块，用来解析 commonjs 依赖
+> 引入 [rollup](https://www.npmjs.com/package/rollup) 模块，用来打包 js 代码\
+> 引入 [@rollup/plugin-replace](https://www.npmjs.com/package/@rollup/plugin-replace) 模块，用来替换代码\
+> 引入 [@rollup/plugin-terser](https://www.npmjs.com/package/@rollup/plugin-terser) 模块，用来压缩 js 代码\
+> 引入 [@rollup/plugin-node-resolve](https://www.npmjs.com/package/@rollup/@rollup/plugin-node-resolve) 模块，用来解析 node\_modules 中的依赖\
+> 引入 [@rollup/commonjs](https://www.npmjs.com/package/@rollup/@rollup/commonjs) 模块，用来解析 commonjs 依赖
 
 ```js
 import { green, bold } from 'kolorist';
 ```
 
->引入 [kolorist](https://www.npmjs.com/package/kolorist) 模块，用来输出彩色文字
+> 引入 [kolorist](https://www.npmjs.com/package/kolorist) 模块，用来输出彩色文字
 
 ### 3.2 定义变量
 
@@ -239,11 +237,12 @@ async function prod() {
 ```
 
 这个函数主要做了以下几件事：
-1. 移除 dist 目录
-2. 监听 src 目录
-3. 对于监听的文件，调用 cb 函数，把返回的 promise ，存入数组 waitList。
-4. 最后调用 Promise.all(waitList) 执行所有的 `promise`。
-5. 最后打印构建时长。
+
+1.  移除 dist 目录
+2.  监听 src 目录
+3.  对于监听的文件，调用 cb 函数，把返回的 promise ，存入数组 waitList。
+4.  最后调用 Promise.all(waitList) 执行所有的 `promise`。
+5.  最后打印构建时长。
 
 ### 3.5 dev 函数
 
@@ -272,12 +271,13 @@ async function dev() {
 ```
 
 这个函数和 prod 函数类似，主要做了以下几件事：
-1. 移除 dist 目录
-2. 监听 src 目录
-3. 对于监听的文件，调用 cb 函数，把返回的 promise ，存入数组 waitList。
-4. 文件改变时，调用 cb 函数。
-5. 调用 Promise.all(waitList) 执行所有的 `promise`。
-6. 最后打印启动时长，清空 waitList。
+
+1.  移除 dist 目录
+2.  监听 src 目录
+3.  对于监听的文件，调用 cb 函数，把返回的 promise ，存入数组 waitList。
+4.  文件改变时，调用 cb 函数。
+5.  调用 Promise.all(waitList) 执行所有的 `promise`。
+6.  最后打印启动时长，清空 waitList。
 
 我们接着来看，`cb` 函数，这个函数用来处理文件变化。
 
@@ -496,7 +496,8 @@ async function bundleModule(module) {
 用 `rollup` 打包模块，处理成 `commonjs`，并写入 `dist/miniprogram_npm` 目录。
 
 如图所示：
-![miniprogram_npm](./images/npm.png)
+
+![npm.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c58f03fd946743c3a6d5ec510016979c~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=H5bY8Q2HoSOsX9aIqBZLX6H8qXI%3D)
 
 我们继续来看 `html` 文件处理：
 
@@ -597,11 +598,11 @@ h1 {
 
 `vue-mini` 作者在最后也有一页接下来的开发方向的PPT。
 
-![vue-mini-next](./images/vue-mini-next.png)
+![vue-mini-next.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/5858c2dd287046d3a47b2f95d928b5dc~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=dawmUpCSOrmISCEf%2B5EFY6zo%2BU0%3D)
 
 感兴趣的小伙伴可以[点个 star](https://github.com/vue-mini/vue-mini)。我们持续关注后续发展，有余力的小伙伴也可以多参与贡献。
 
-----
+***
 
 **如果看完有收获，欢迎点赞、评论、分享、收藏支持。你的支持和肯定，是我写作的动力**。
 

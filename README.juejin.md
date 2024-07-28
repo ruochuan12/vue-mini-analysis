@@ -9,19 +9,19 @@ theme: smartblue
 
 刚刚结束不久的[vueconf 2024 深圳](https://vueconf.cn)，有一个主题《Vue-Mini 不妥协的小程序框架》，[仓库](https://github.com/yangmingshan/slides)、[PPT](https://feday.fequan.com/vueconf24/mingshan_VueConf%20CN%202024.pdf)、[视频](https://www.bilibili.com/video/BV1J4421D7ja/)
 
-![vueconf.cn 截图](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9b12b4eebc204cd8bdc5e5703b4bea49~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=WHB90pZKM%2FJz6rTsK%2BczROJdDgc%3D)
+![vueconf.cn 截图](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9b12b4eebc204cd8bdc5e5703b4bea49~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=l1%2FXGZA8EzhBL75EODlRBtxyV%2BY%3D)
 
 PPT 中有这样两页。
 
-![vuemini-vs-taro.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d2350d433de94d5ca75d076039ec30f3~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=0Q%2Fsttfaj0k9RaEnWaiUsyA0gPA%3D)
+![vuemini-vs-taro.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d2350d433de94d5ca75d076039ec30f3~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=fKY5%2FMx0kjNDPKfN3UoFokTqhkw%3D)
 
 [和 taro 性能对比数据的仓库链接](https://github.com/yangmingshan/mp-framework-benchmark)，目前作者暂未给出与 `uniapp` 的性能对比。[有小伙伴在 issue 中问到，作者回复后续会补上](https://github.com/yangmingshan/mp-framework-benchmark/issues/1)
 
 [vue-mini 官网](https://vuemini.org/guide/comparisons.html) 与其他的比较。
 
-![vue-mini 官网与其他的比较](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/cb65bd1eb46344199226ebf5ee35fa90~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=qJjxdhEvntzRtqQMaz2FG3Y3f0M%3D)
+![vue-mini 官网与其他的比较](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/cb65bd1eb46344199226ebf5ee35fa90~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=5eyS1K%2FRuAlG9cufDyrgChGLmAs%3D)
 
-![vue-mini 官网与其他的比较2](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a7c64ee8483d48f8a9c967bc4f8015ca~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=e9ecf3d6\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1721543886\&x-orig-sign=Oeaq01Dno3zE8AJ3xSaPbnv%2B2II%3D)
+![vue-mini 官网与其他的比较2](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/a7c64ee8483d48f8a9c967bc4f8015ca~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=1kthPonBEWp%2FGu112DryUTSX3Fs%3D)
 
 更多兼容性和使用方法等查阅[vue-mini 文档](https://vuemini.org/)。
 
@@ -38,9 +38,9 @@ PPT 中有这样两页。
 
 ## 2. 初始化项目
 
-根据 [官网文档快速开始](https://vuemini.org/guide/quick-start.html) 生成小程序项目，我采用的是 `pnpm create vue-mini@lastest`，我都选择的"是"。如下图所示：
+根据 [官网文档快速开始](https://vuemini.org/guide/quick-start.html) 生成小程序项目，我采用的是 `pnpm create vue-mini@latest`，我都选择的"是"。如下图所示：
 
-![screenshot-cli.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/419ee9538a204539a9a839835bc9de0d~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=mG%2BC0Af%2FWHsrMFfxp6p3b1ZWxVw%3D)
+![screenshot-cli.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/419ee9538a204539a9a839835bc9de0d~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=al2FHR1jOfpUxYqa44eaqnXSG4A%3D)
 
 这个命令调用的是 [create-vue-mini](https://github.com/vue-mini/create-vue-mini) 这个项目，写文章时的版本是 `1.0.4`。它由 [create-vue](https://github.com/vuejs/create-vue) 修改而来。我在21年写过它的源码文章[Vue 团队公开快如闪电的全新脚手架工具 create-vue，未来将替代 Vue-CLI，才300余行代码，学它！](https://juejin.cn/post/7018344866811740173)，(3.9w+阅读量、483赞)可供学习。
 
@@ -60,35 +60,33 @@ pnpm install
 
 打开项目如图：
 
-![vue-mini-project.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b38b7c58a65b4df2a9ae78b4a72c1528~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=%2BH4pcqu5wSxTqK3WJBbJ%2Fh%2B%2BFzs%3D)
+![vue-mini-project.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/b38b7c58a65b4df2a9ae78b4a72c1528~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=Z%2Fqt0O%2Fr4MiGoccnLuWEKoFPaWY%3D)
 
-![vue-mini-project-mine.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/3a4a5d3858754f42a39db68dc2e2db15~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=GYcwunbHBAg%2BnglsdTbrDM1BPxA%3D)
+![vue-mini-project-mine.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/3a4a5d3858754f42a39db68dc2e2db15~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=38y9ssRrTlCCP%2BJiHweg1Sm103k%3D)
 
 ### 3.1 对比打包构建的代码
 
 我们具体来对比执行 `pnpm run dev` 命令之后生成的代码。
 
 入口 app.ts 文件
-![入口 app.ts 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9593911210bb4a399ea487589adf8fe1~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544112&x-orig-sign=HLFhh4hV8R47v4U3pg2v8iAdRBk%3D)
+![入口 app.ts 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/9593911210bb4a399ea487589adf8fe1~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=DXjmymzGRQMMtA%2BuwJRz%2BwwE1Tw%3D)
 
 首页 html 文件
-![首页 html 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d16f83dc9cef49b09f21acc9a8ff6b7a~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544140&x-orig-sign=06BQSDNV2MjUOJLnIbM3LkKsk8Q%3D)
+![首页 html 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/d16f83dc9cef49b09f21acc9a8ff6b7a~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=Mx%2FKU8RkFKvrRTSHJG8r6lflnAc%3D)
 
 首页 css 文件
-![首页 css 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c25f8e02dfae4ab9a7b0ca9011dcca15~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544161&x-orig-sign=%2FBon1labFfiXq4eeBMfzmAwPOE8%3D)
+![首页 css 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c25f8e02dfae4ab9a7b0ca9011dcca15~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=1%2F53Iv4Z6qCLbdrjJ%2FvB03f3y7k%3D)
 
 首页 ts 文件
-![首页 ts 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6e23d968c93b4de5b9986c24f818fbd6~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544183&x-orig-sign=pTgm%2BKXMppYVmHnhoNZ%2Frz9nReg%3D)
+![首页 ts 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/6e23d968c93b4de5b9986c24f818fbd6~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=YYJuQAv2B3JNXNf0sTX994m%2B2M0%3D)
 
 首页 json 文件
-![首页 json 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c73cc5fea6854134bc56f72768b85166~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1721544202&x-orig-sign=gNYBbQduYQMjCuL64w5ALXAMdiM%3D)
+![首页 json 文件](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c73cc5fea6854134bc56f72768b85166~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=BCCqa8MTMBdP%2BinhVSw6ChrQ88k%3D)
 
 我们可以看到主要就是处理入口 `app.ts` 文件（单独追加了 `promise-polyfill`）、`html`、`css`、`ts`文件编译成了微信小程序支持的 `app.js`、`wxml`、`wxss`、`js`。`json` 文件是直接复制的，没做处理。
 
 换句话说：
-模板写法使用的是原生微信小程序的`wxml`，只是改名了 `html` 而已，
-`css` 部分也是原生微信小程序的 `wxss` 只是单位 `rpx` 改成了 `px` 而已，未做类似单文件组件的编译。
-就是就是逻辑侧，`ts` 文件使用了 `vue-mini/core`，轻运行时，会把 `ES Module` 编译成 `commonjs`。
+模板写法使用的是原生微信小程序的`wxml`，只是改名了 `html` 而已，`css` 部分也是原生微信小程序的 `wxss` 只是单位 `rpx` 改成了 `px` 而已，未做类似单文件组件的编译。只是在逻辑侧，`ts` 文件使用了 `vue-mini/core`，轻运行时，会把 `ES Module` 编译成 `commonjs`。
 
 ### 3.2 dev 和 build 命令
 
@@ -108,11 +106,11 @@ pnpm install
 
 我们可以打开 `build.js` 文件，查看下它的代码。
 
-![build.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/1266472e495c4a348cd9ae1e19d80c5d~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=u1%2BUlormlJ98XHwsp8Cc%2F3QbCrQ%3D)
+![build.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/1266472e495c4a348cd9ae1e19d80c5d~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=8kbPyHBthLpezHBWx9Dvw9fP0Yc%3D)
 
 调试可参考我的文章[新手向：前端程序员必学基本技能——调试 JS 代码](https://juejin.cn/post/7030584939020042254)，或者[据说 90%的人不知道可以用测试用例(Vitest)调试开源项目(Vue3) 源码](https://juejin.cn/post/7212263304394981432)。本文就不做过多赘述。
 
-![debugger.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/aa84c2f4a39c4665ab962450a21f1665~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=1mBrWFOKrm3CBKHe1%2FWyOtPe7tE%3D)
+![debugger.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/aa84c2f4a39c4665ab962450a21f1665~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=kqLzoY4%2BKf%2BpMHpP44MpdjSZjho%3D)
 
 `build.js` 目前是比较原始的方式，没有各种封装，相对容易学习。有小伙伴提建议[\[Feature\] 希望可以增强工程化等基建体验 #65](https://github.com/vue-mini/vue-mini/issues/65)。
 
@@ -497,7 +495,7 @@ async function bundleModule(module) {
 
 如图所示：
 
-![npm.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c58f03fd946743c3a6d5ec510016979c~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=H5bY8Q2HoSOsX9aIqBZLX6H8qXI%3D)
+![npm.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/c58f03fd946743c3a6d5ec510016979c~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=afQfvZ7TtFZOmvLMwzkULna7VAc%3D)
 
 我们继续来看 `html` 文件处理：
 
@@ -586,19 +584,25 @@ h1 {
 
 ## 4. 总结
 
-我们知道了 `vue-mini` 是渐进式开发微信小程序。和原生开发不是二选一。性能上，`vue-mini` 接近原生，开发体验优于原生开发。
+我们学习了初始化项目中的 `build.js` 是如何打包小程序代码的。
 
-学习了初始化项目中的 `build.js` 是如何打包小程序代码的。
+学习了使用 `cross-env` 配置环境变量，使用 `chokidar` 监听文件变动。`html` 文件就是原生微信小程序的wxml，直接复制粘贴修改了后缀名到`dist`目录。 使用 `babel` 和 `rollup` 处理 `js` 文件，入口文件 app.config.ts ，还在开头追加了 `promise-ployfill` ，使用 `postcss` 处理样式文件，其他文件是直接复制粘贴到 `dist` 目录的。
 
-学习了使用 `cross-env` 配置环境变量，使用 `chokidar` 监听文件变动。使用 `babel` 处理 `js` 文件，使用 `rollup` 打包模块，使用 `postcss` 处理样式文件。
+也就是说：只是`html`(`wxml`)模板部分还是原生微信小程序写法，`ts`(`js`)逻辑部分使用了`vue-mini`（轻运行时）。
 
-`vue-mini` 比较适合不需要跨端，比如不需要同时支持微信小程序和支付宝小程序。是一个新选择，性能基本等于原生微信小程序。适合本身就是使用的原生微信小程序开发的，可以渐进式升级替换为 `vue-mini`。
+常言道：一图胜千言。我画了一张图表示：
 
-不过目前还处于相对初期阶段，生态还不是很完善，比如暂不支持 less、sass 等。
+![vue-mini.drawio.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/315a76e6119545499d0b4200ffe90c38~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=e9ecf3d6&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722266058&x-orig-sign=qwQYN5GEKZZ5t0C2eXHdAPOPBVU%3D)
 
-`vue-mini` 作者在最后也有一页接下来的开发方向的PPT。
+`vue-mini` 比较适合不需要跨端，比如不需要同时支持微信小程序和支付宝小程序。只开发微信小程序是一个新选择，性能基本等于原生微信小程序，逻辑部分开发体验优于原生微信小程序。适合本身就是使用的原生微信小程序开发的，可以渐进式升级替换为 `vue-mini`。
 
-![vue-mini-next.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/5858c2dd287046d3a47b2f95d928b5dc~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9\&rk3s=f64ab15b\&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018\&x-orig-expires=1722059724\&x-orig-sign=dawmUpCSOrmISCEf%2B5EFY6zo%2BU0%3D)
+也就是说 `vue-mini` 是渐进式开发微信小程序。和原生开发不是二选一。性能上，`vue-mini` 接近原生，开发体验优于原生开发。
+
+不过目前还处于相对初期阶段，生态还不是很完善，比如暂不支持 `less、sass` 等。
+
+`vue-mini` 作者在最后也有一页接下来的开发方向的PPT。作者目前时间和精力有限，没有支持多端的打算。长期可能有。
+
+![vue-mini-next.png](https://p0-xtjj-private.juejin.cn/tos-cn-i-73owjymdk6/5858c2dd287046d3a47b2f95d928b5dc~tplv-73owjymdk6-watermark.image?policy=eyJ2bSI6MywidWlkIjoiMTQxNTgyNjcwNDk3MTkxOCJ9&rk3s=f64ab15b&x-orig-authkey=f32326d3454f2ac7e96d3d06cdbb035152127018&x-orig-expires=1722784353&x-orig-sign=4eMhcDVqFUqzeouizuwrZeRG6oo%3D)
 
 感兴趣的小伙伴可以[点个 star](https://github.com/vue-mini/vue-mini)。我们持续关注后续发展，有余力的小伙伴也可以多参与贡献。
 

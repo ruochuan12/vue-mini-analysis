@@ -40,7 +40,7 @@ PPT 中有这样两页。
 
 ## 2. 初始化项目
 
-根据 [官网文档快速开始](https://vuemini.org/guide/quick-start.html) 生成小程序项目，我采用的是 `pnpm create vue-mini@lastest`，我都选择的"是"。如下图所示：
+根据 [官网文档快速开始](https://vuemini.org/guide/quick-start.html) 生成小程序项目，我采用的是 `pnpm create vue-mini@latest`，我都选择的"是"。如下图所示：
 
 ![screenshot-cli](./images/screenshot-cli.png)
 
@@ -89,9 +89,7 @@ pnpm install
 我们可以看到主要就是处理入口 `app.ts` 文件（单独追加了 `promise-polyfill`）、`html`、`css`、`ts`文件编译成了微信小程序支持的 `app.js`、`wxml`、`wxss`、`js`。`json` 文件是直接复制的，没做处理。
 
 换句话说：
-模板写法使用的是原生微信小程序的`wxml`，只是改名了 `html` 而已，
-`css` 部分也是原生微信小程序的 `wxss` 只是单位 `rpx` 改成了 `px` 而已，未做类似单文件组件的编译。
-就是就是逻辑侧，`ts` 文件使用了 `vue-mini/core`，轻运行时，会把 `ES Module` 编译成 `commonjs`。
+模板写法使用的是原生微信小程序的`wxml`，只是改名了 `html` 而已，`css` 部分也是原生微信小程序的 `wxss` 只是单位 `rpx` 改成了 `px` 而已，未做类似单文件组件的编译。只是在逻辑侧，`ts` 文件使用了 `vue-mini/core`，轻运行时，会把 `ES Module` 编译成 `commonjs`。
 
 ### 3.1 dev 和 build 命令
 
@@ -585,17 +583,23 @@ h1 {
 
 ## 4. 总结
 
-我们知道了 `vue-mini` 是渐进式开发微信小程序。和原生开发不是二选一。性能上，`vue-mini` 接近原生，开发体验优于原生开发。
+我们学习了初始化项目中的 `build.js` 是如何打包小程序代码的。
 
-学习了初始化项目中的 `build.js` 是如何打包小程序代码的。
+学习了使用 `cross-env` 配置环境变量，使用 `chokidar` 监听文件变动。`html` 文件就是原生微信小程序的wxml，直接复制粘贴修改了后缀名到`dist`目录。 使用 `babel` 和 `rollup` 处理 `js` 文件，入口文件 app.config.ts ，还在开头追加了 `promise-ployfill` ，使用 `postcss` 处理样式文件，其他文件是直接复制粘贴到 `dist` 目录的。
 
-学习了使用 `cross-env` 配置环境变量，使用 `chokidar` 监听文件变动。使用 `babel` 处理 `js` 文件，使用 `rollup` 打包模块，使用 `postcss` 处理样式文件。
+也就是说：只是`html`(`wxml`)模板部分还是原生微信小程序写法，`ts`(`js`)逻辑部分使用了`vue-mini`（轻运行时）。
 
-`vue-mini` 比较适合不需要跨端，比如不需要同时支持微信小程序和支付宝小程序。是一个新选择，性能基本等于原生微信小程序。适合本身就是使用的原生微信小程序开发的，可以渐进式升级替换为 `vue-mini`。
+常言道：一图胜千言。我画了一张图表示：
 
-不过目前还处于相对初期阶段，生态还不是很完善，比如暂不支持 less、sass 等。
+![vue-mini.drawio.png](./images/drawio/vue-mini.drawio.png)
 
-`vue-mini` 作者在最后也有一页接下来的开发方向的PPT。
+`vue-mini` 比较适合不需要跨端，比如不需要同时支持微信小程序和支付宝小程序。只开发微信小程序是一个新选择，性能基本等于原生微信小程序，逻辑部分开发体验优于原生微信小程序。适合本身就是使用的原生微信小程序开发的，可以渐进式升级替换为 `vue-mini`。
+
+也就是说 `vue-mini` 是渐进式开发微信小程序。和原生开发不是二选一。性能上，`vue-mini` 接近原生，开发体验优于原生开发。
+
+不过目前还处于相对初期阶段，生态还不是很完善，比如暂不支持 `less、sass` 等。
+
+`vue-mini` 作者在最后也有一页接下来的开发方向的PPT。作者目前时间和精力有限，没有支持多端的打算。长期可能有。
 
 ![vue-mini-next](./images/vue-mini-next.png)
 
